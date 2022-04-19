@@ -3,10 +3,12 @@ import axios from "axios";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import Card from "../components/Card";
 import "../styles/movieDetailPage.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Button } from "react-bootstrap";
 
 const API_URL = "http://localhost:5005";
 
-function MovieDetailPage({img, title, mainActor, genres, description}) {
+function MovieDetailPage({ img, title, mainActor, genres, description }) {
   const [movie, setMovie] = useState(null);
   // get the URL parameter : `movieId``
   const { movieId } = useParams();
@@ -30,7 +32,7 @@ function MovieDetailPage({img, title, mainActor, genres, description}) {
   useEffect(() => {
     getMovie();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[]);
+  }, []);
 
   const deleteMovie = () => {
     // make a delete request to delete the movie
@@ -50,35 +52,40 @@ function MovieDetailPage({img, title, mainActor, genres, description}) {
     <div className="oneMovieWrapper">
       {movie && (
         <>
-            <Card
-              movieId={movie._id}
-              img={movie.imageUrl}
-              title={movie.title}
-              mainActor={movie.mainActor}
-              description={movie.description}
-              genres=
-               {movie.genre &&
-                movie.genres.map((g) => {
-                  return (
-                    <span className="genre" key={g._id}>
-                      {" "}
-                      {g.name} {" "}
-                    </span>
-                  );
-                })}
-            /> 
-        
+          <Card
+            movieId={movie._id}
+            img={movie.imageUrl}
+            title={movie.title}
+            mainActor={movie.mainActor}
+            description={movie.description}
+            genres={
+              movie.genre &&
+              movie.genres.map((g) => {
+                return (
+                  <span className="genre" key={g._id}>
+                    {" "}
+                    {g.name}{" "}
+                  </span>
+                );
+              })
+            }
+          />
         </>
       )}
       <div className="buttonLink">
         <Link to="/movies">
-          <button>Back to movies</button>
+          <Button variant="primary" size="sm">
+            Back to movies
+          </Button>{" "}
         </Link>
         <Link to={`/movies/edit/${movieId}`}>
-          <button>Edit movie</button>
+          <Button variant="primary" size="sm">
+            Edit movie
+          </Button>{" "}
         </Link>
-
-        <button onClick={deleteMovie}>Delete</button>
+        <Button variant="primary" size="sm" onClick={deleteMovie}>
+          Delete
+        </Button>{" "}
       </div>
     </div>
   );

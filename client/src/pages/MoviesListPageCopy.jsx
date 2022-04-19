@@ -26,7 +26,6 @@ function MoviesListPageCopy({ img, title, mainActor, genres }) {
 
   return (
     <div className="movieListPage">
-      <h1 className="movieListPageTitle">Movie List </h1>
       <div className="movieListPageWrapper">
         {/* connect the nested Form componnent 
     We are going to display the from component AddProject inside of the MoviesListPage. 

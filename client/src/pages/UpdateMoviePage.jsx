@@ -129,11 +129,11 @@ function UpdateMoviePage(props) {
   // const handleChange = ()=>{}
 
   return (
-    <div className="updateMoviePage">
+    <div className="editMoviePage">
       <Container fluid>
-        <Form>
+        <Form className="updateMoviePage">
           <Form.Group className="mb-3">
-            <Form.Label htmlFor="title">Titre:</Form.Label>
+            <Form.Label htmlFor="title">Title:</Form.Label>
             <Form.Control
               type="text"
               name="title"
@@ -142,7 +142,6 @@ function UpdateMoviePage(props) {
               onChange={(e) => setMovie({ ...movie, title: e.target.value })}
             />
           </Form.Group>
-
           <Form.Group className="mb-3">
             <Form.Label htmlFor="description">Description</Form.Label>
             <Form.Control
@@ -157,7 +156,6 @@ function UpdateMoviePage(props) {
               }
             />
           </Form.Group>
-
           <Form.Group className="mb-3">
             <Form.Label htmlFor="mainActor"></Form.Label>
             <Form.Control
@@ -170,7 +168,6 @@ function UpdateMoviePage(props) {
               }
             />
           </Form.Group>
-
           <Form.Group>
             <div className="checkboxes">
               {genres.map((genre, index) => {
@@ -192,23 +189,19 @@ function UpdateMoviePage(props) {
               })}
             </div>
           </Form.Group>
-
           <Form.Group>
-            <input
+            <Form.Control
               type="file"
               name="imageUrl"
-              id=""
               ref={imageRef}
               onChange={(e) => {
                 setMovie({ ...movie, imageUrl: e.target.files[0] });
               }}
             />
           </Form.Group>
-
-          <Form.Group>
+          <Form.Group id="image">
             <img src={movie.imageUrl} alt="movie" />
           </Form.Group>
-
           <div className="d-grid gap-2">
             <Button variant="secondary" size="lg" onClick={handleSubmit}>
               Update this movie

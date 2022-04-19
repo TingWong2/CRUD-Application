@@ -1,0 +1,19 @@
+.HomePage {
+background-image: url("../assets/homepage.jpg");
+background-repeat: no-repeat;
+background-position: center center;
+background-size: cover;
+width: 100%;
+height: 100vh;
+display: flex;
+flex-direction: row;
+justify-content: center;
+}
+
+.HomePageTitle {
+    padding-top: 5%;
+    color:azure;
+    text-align: center;
+
+    
+}

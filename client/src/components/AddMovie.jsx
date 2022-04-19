@@ -99,10 +99,10 @@ function AddMovie(props) {
 
   return (
     <div className="AddMovie">
-      <h1> New Movie</h1>
+      {/* <h1> New Movie</h1> */}
       <Container fluid>
-        <Form>
-          <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+        <Form className="addMovieform">
+          <Form.Group className="mb-3" controlId="title">
             <Form.Label>Title:</Form.Label>
             <Form.Control
               type="title"
@@ -117,7 +117,7 @@ function AddMovie(props) {
             <Form.Label htmlFor="description"> Description:</Form.Label>
             <Form.Control
               as="textarea"
-              rows={3}
+              rows={4}
               // type="description"
               name="description"
               id="description"

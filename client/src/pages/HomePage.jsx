@@ -1,9 +1,9 @@
-import "../App.css";
+import "../styles/homePage.css";
 
 function HomePage() {
   return (
-    <div className="App">
-      <h1>My movie Librairy</h1>
+    <div className="HomePage">
+      <h1 className="HomePageTitle">My movie Librairy</h1>
     </div>
   );
 }

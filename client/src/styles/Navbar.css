@@ -1,7 +1,28 @@
 .NavMain {
     display: flex;
-    justify-content: space-around;
-    background-color: #ffefe8;
-    padding: 10px 0;
+    justify-content: left;
+    gap: 20px;
+    background-color: rgb(1,10,38);
+    padding: 1% 1%;
+   
+    
   }
+
+.NavMain a {
+  color: rgb(154, 128, 191);
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+
   
+@media screen and (min-width:800px){
+  .NavMain {
+    gap: 30px;
+  }
+  .NavMain a {
+    font-size: 30px;
+  }
+
+}
