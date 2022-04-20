@@ -1,10 +1,5 @@
-* {
-    margin:0; 
-    padding:0;
-    box-sizing: border-box;
-}
 
-.oneMovieWrapper{
+/* .oneMovieWrapper{
     margin:0rem;
     display:grid;
     gap:1rem;
@@ -13,43 +8,55 @@
     background-color: rgb(2, 24,89);
     height: 90vh;
     width: 100%;
-  }
+  } */
 
-  
+.oneMovieWrapper{
+  height: 90vh;
+}
+
 .oneMovieWrapper .card{
   background-color: rgb(2, 24,89);
   height: 100%;
-  padding:0.5%;
+  /* padding:0.5%; */
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
 }
 
-.oneMovieWrapper .card__img{
-    width: 50%;
+.oneMovieWrapper .card__img {
+    height: 35vh;
+    width: 100%;
     object-fit: contain;
   }
 
 
-.oneMovieWrapper .card__body{
+.oneMovieWrapper .card__body {
+    height: 65vh;
     width:100%;
-    height: 16rem;
+    /* height: 16rem; */
     display: flex;
     flex-direction: column;
     justify-content: center;
     text-align: center;
-    padding-left: 2rem;
+    /* padding-left: 1rem; */
   }
-  
 
-.oneMovieWrapper p{
-    width: 80%;
-    font-size: 15px;
-    color:azure
+/* .oneMovieWrapper .card__title {
+  height: 20%;
+} */
+.oneMovieWrapper .card__body p {
+  /* height: 70%; */
+  width: 100%;
+  font-size: 15px;
+  color:azure; 
 }
 
 .buttonLink{
+  background-color: rgb(2, 24,89);
+  padding: 0;
+  margin: 0;
+  height:10vh;
   text-align: center;
   text-decoration: none;
 }
@@ -65,14 +72,30 @@
 
     .oneMovieWrapper .card__img{
       width: 40%;
-      object-fit: contain;
+      height: -webkit-fill-available;
+      object-fit: cover;
     }
+
     .oneMovieWrapper .card__body{
-    width:100%;
-    height:26rem;
+    width:60%;
+    height:34rem;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     text-align: left;
+    padding-left: 2%;
+    }
+
+    .oneMovieWrapper .card p{
+      font-size: 25px ;
+    }
+
+    .buttonLink{
+      background-color: rgb(2, 24,89);
+      padding: 0;
+      margin: 0;
+      height:10vh;
+      text-align: end;
+      text-decoration: none;
     }
   }

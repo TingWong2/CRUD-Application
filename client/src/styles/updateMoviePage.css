@@ -12,7 +12,7 @@
     justify-content: center;
   } */
 
-.card{
+/*.card{
   background-color: rgb(2, 24,89);
   box-shadow: 1px 1px 0.5px 1px lightgrey;
   border: radius 3%;
@@ -22,29 +22,38 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+}*/
+.container-fluid{
+    background-image: url("../assets/galaxy.jpg");
+    background-repeat: repeat;
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    margin-bottom:0;
+    padding-bottom:0;
+   
+   }
+   
+.updateMoviePage img, svg {
+    vertical-align: middle;
+    width: -webkit-fill-available;
 }
 
-.card__img{
-    width:100%;
-    height:11rem;
-    object-fit: contain;
-  }
-
-
-  .card__body{
+  /* .card__body{
     width:100%;
     height: 16rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
     text-align: center;
-    /* flex-shrink: 2; */
-  }
+  
+  } */
   
 .updateMoviePage p{
     font-size: 15px;
     color:azure;
-    height: 200vh;
+    width: 200vh;
 }
 
 .buttonLink{
@@ -56,12 +65,14 @@
     size: 8rem;
 } */
 /**** define the desktop view ****/
-@media screen and (min-width:800px){
+/* @media screen and (min-width:800px){
     
     .updateMoviePage .card {
+    
       display: flex;
       flex-direction: row;
       justify-content: center;
+      width: 100%;
     }
 
     .updateMoviePage .card__img{
@@ -76,4 +87,4 @@
     justify-content: center;
     text-align: left;
     }
-  }
+  } */

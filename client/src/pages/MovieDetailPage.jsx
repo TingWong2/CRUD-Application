@@ -14,7 +14,7 @@ function MovieDetailPage({ img, title, mainActor, genres, description }) {
   const { movieId } = useParams();
   const nagivate = useNavigate();
 
-  // helper function that make the get request to the API to retrieves the project by the id
+  // helper function that make the get request to the API to retrieves the movie by the id
 
   const getMovie = () => {
     axios
@@ -70,23 +70,23 @@ function MovieDetailPage({ img, title, mainActor, genres, description }) {
               })
             }
           />
+          <div className="buttonLink">
+            <Link to="/movies">
+              <Button variant="primary" size="sm">
+                Back to movies
+              </Button>{" "}
+            </Link>
+            <Link to={`/movies/edit/${movieId}`}>
+              <Button variant="primary" size="sm">
+                Edit movie
+              </Button>{" "}
+            </Link>
+            <Button variant="primary" size="sm" onClick={deleteMovie}>
+              Delete
+            </Button>{" "}
+          </div>
         </>
       )}
-      <div className="buttonLink">
-        <Link to="/movies">
-          <Button variant="primary" size="sm">
-            Back to movies
-          </Button>{" "}
-        </Link>
-        <Link to={`/movies/edit/${movieId}`}>
-          <Button variant="primary" size="sm">
-            Edit movie
-          </Button>{" "}
-        </Link>
-        <Button variant="primary" size="sm" onClick={deleteMovie}>
-          Delete
-        </Button>{" "}
-      </div>
     </div>
   );
 }

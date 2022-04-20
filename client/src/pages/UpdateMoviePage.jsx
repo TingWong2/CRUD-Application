@@ -146,7 +146,7 @@ function UpdateMoviePage(props) {
             <Form.Label htmlFor="description">Description</Form.Label>
             <Form.Control
               as="textarea"
-              rows={3}
+              rows={4}
               // type="textarea"
               name="description"
               id="description"
