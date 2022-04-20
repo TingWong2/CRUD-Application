@@ -3,16 +3,16 @@
     justify-content: left;
     gap: 20px;
     background-color: rgb(1,10,38);
-    padding: 1% 1%;
-   
+    /* padding: 1% 1%; */
+    height:10vh;
     
   }
 
 .NavMain a {
   color: rgb(154, 128, 191);
   text-decoration: none;
-  font-size: 20px;
-  font-weight: bold;
+  font-size: 25px;
+  /* font-weight: bold; */
 }
 
 

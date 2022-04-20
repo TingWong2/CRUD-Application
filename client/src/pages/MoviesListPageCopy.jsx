@@ -1,12 +1,20 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Card from "../components/Card";
+// import SearchBar from "../components/SearchBar";
 import "../App.css";
 
 const API_URL = " http://localhost:5005";
 
 function MoviesListPageCopy({ img, title, mainActor, genres }) {
   const [movies, setMovies] = useState([]);
+  //const [searchTerm, setSearchTerm] = useState("");
+
+  // const movieSearched = movies.filter((movie) =>
+  //   movie.title.tolowerCase().includes(searchTerm.toLocaleLowerCase())
+  // );
+  // setSearchTerm(movieSearched);
+  // console.log("setSearchTerm", setSearchTerm);
 
   const getAllMovies = () => {
     axios
@@ -27,6 +35,7 @@ function MoviesListPageCopy({ img, title, mainActor, genres }) {
   return (
     <div className="movieListPage">
       <div className="movieListPageWrapper">
+        {/* <SearchBar seachTerm={searchTerm} setSearchTerm={searchTerm} /> */}
         {/* connect the nested Form componnent 
     We are going to display the from component AddProject inside of the MoviesListPage. 
     This way we can create new movies from the same page. We will AddMovie component by passing it 
