@@ -8,12 +8,12 @@ import { Button } from "react-bootstrap";
 
 const API_URL = "http://localhost:5005";
 
-function MovieDetailPage({ img, title, mainActor, genres, description }) {
+function MovieDetailPage({ img, title, mainActor, description }) {
   const [movie, setMovie] = useState(null);
-  // get the URL parameter : `movieId``
+  // get the URL parameter : `movieId`
   const { movieId } = useParams();
   const nagivate = useNavigate();
-
+  const [genres, setGenres] = useState([]);
   // helper function that make the get request to the API to retrieves the movie by the id
 
   const getMovie = () => {
@@ -23,6 +23,15 @@ function MovieDetailPage({ img, title, mainActor, genres, description }) {
         const oneMovie = response.data;
         console.log("===> DetailPage response.data", response.data);
         setMovie(oneMovie);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    axios
+      .get(`${API_URL}/api/genres`)
+      .then((response) => {
+        const foundGenres = response.data;
+        setGenres(foundGenres);
       })
       .catch((error) => {
         console.log(error);
@@ -59,7 +68,7 @@ function MovieDetailPage({ img, title, mainActor, genres, description }) {
             mainActor={movie.mainActor}
             description={movie.description}
             genres={
-              movie.genre &&
+              movie.genres &&
               movie.genres.map((g) => {
                 return (
                   <span className="genre" key={g._id}>
