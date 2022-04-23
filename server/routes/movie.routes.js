@@ -33,9 +33,9 @@ router.post(
 // ****** READ ******
 // GET /api/movies - Retrieves all the movies
 router.get("/movies", (req, res, next) => {
-  Movie.find()
+  Movie.find() //  Mongoose’s find() is sending a MongoDB find command to the database
     .populate("genres")
-
+    // using a promise
     .then((responseAllMovies) => {
       console.log("here is the BACK response", responseAllMovies);
       res.status(200).json(responseAllMovies);
