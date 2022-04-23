@@ -10,6 +10,14 @@ const API_URL = " http://localhost:5005";
 function MoviesListPage() {
   const [movies, setMovies] = useState([]);
 
+  //const [searchTerm, setSearchTerm] = useState("");
+
+  // const movieSearched = movies.filter((movie) =>
+  //   movie.title.tolowerCase().includes(searchTerm.toLocaleLowerCase())
+  // );
+  // setSearchTerm(movieSearched);
+  // console.log("setSearchTerm", setSearchTerm);
+
   const getAllMovies = () => {
     axios
       .get(`${API_URL}/api/movies`)
@@ -30,6 +38,8 @@ function MoviesListPage() {
     <div>
       <h1 className="movieList">Movie List </h1>
       <Container fluid>
+        {/* <SearchBar seachTerm={searchTerm} setSearchTerm={searchTerm} /> */}
+
         {/* connect the nested Form componnent 
     We are going to display the from component AddProject inside of the MoviesListPage. 
     This way we can create new movies from the same page. We will AddMovie component by passing it 

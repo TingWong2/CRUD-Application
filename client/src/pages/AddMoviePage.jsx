@@ -32,6 +32,7 @@ function AddMovie(props) {
       });
   }, []);
 
+  // *** function handleChange is updating the selecting checkbox in a list
   const handleChange = (genreId) => {
     console.log("@@@@@@ genreId", genreId);
 
@@ -63,9 +64,10 @@ function AddMovie(props) {
 
     const { title, description, mainActor, genres } = movie; // destructuring the state
 
+    //* As we got a file and upload it we need to use the FormData object
     const formData = new FormData(); // create a form data => an object to send as post body
 
-    // appending the keys / values pairs to the FormData
+    //* appending the keys / values pairs to the FormData
     formData.append("title", title); // create a key [title] on the formData
     formData.append("description", description);
     formData.append("mainActor", mainActor);
@@ -73,24 +75,21 @@ function AddMovie(props) {
     for (var i = 0; i < checkedGenre.length; i++) {
       formData.append("genres[]", checkedGenre[i]);
     }
-
     console.log("genres array", genres);
-    // last: accessing the image out of the ref ...
-    formData.append("imageUrl", imageRef.current.files[0]); // target the image file associated to the input[type=file]
 
+    //* last: accessing the image out of the ref ...
+    formData.append("imageUrl", imageRef.current.files[0]); // target the image file associated to the input[type=file]
     console.log("------ FORM DATA -----");
     console.log(formData); // <= this looks like a empty object
 
+    //*** creating new ones (POST request) */
     try {
       console.log("formData", formData);
 
       const response = await axios.post(`${API_URL}/api/movies`, formData);
 
-      console.log("Creating a new movie", response.data);
+      console.log("Here!!!! A new movie is creating", response.data);
 
-      //We will invoke the function getAllMovies passed through the props once the form is submitted:
-      //props.refreshMovies();
-      //This way we are refreshing the list of movies and dynamically fetching data each time we create a new movie using the form.
       navigate("/movies");
     } catch (error) {
       console.log("Error when adding the new movie", error);

@@ -10,11 +10,14 @@ const API_URL = "http://localhost:5005";
 
 function MovieDetailPage({ img, title, mainActor, description }) {
   const [movie, setMovie] = useState(null);
-  // get the URL parameter : `movieId`
+  // We retrieved the movie id coming from the URL parameter movieId using the useParams hook.
   const { movieId } = useParams();
   const nagivate = useNavigate();
   const [genres, setGenres] = useState([]);
-  // helper function that make the get request to the API to retrieves the movie by the id
+
+  //*** Display one specific movie by it ID
+  // * helper function with axios that make the get request to the API to retrieves the movie by the id
+  // * and all the genres
 
   const getMovie = () => {
     axios
@@ -38,11 +41,16 @@ function MovieDetailPage({ img, title, mainActor, description }) {
       });
   };
 
+  //*** added an effect that will run only once, after the initial render.
+  //*** So as soon as the component renders for the first time, the effect will run and it will call
+  //*** the getMovie() function to fetch the movie and set it in the state (state variable movie). */
   useEffect(() => {
     getMovie();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+  //*** the effect should run only once by setting the empty dependency array [].
 
+  //*** Delete a specific movie ***/
   const deleteMovie = () => {
     // make a delete request to delete the movie
     axios

@@ -17,7 +17,9 @@ function UpdateMoviePage(props) {
   });
 
   const { movieId } = useParams();
+  //* Using the React Router’s useParams() hook we retrieve the projectId parameter from the URL: */
   const imageRef = useRef("");
+  //* useRef is like a “box” that can hold a mutable value in its .current property.
   const [genres, setGenres] = useState([]);
   const navigate = useNavigate();
   const [checkedGenre, setcheckedGenre] = useState([]);
@@ -49,6 +51,7 @@ function UpdateMoviePage(props) {
   }, [movieId]);
   console.log("movie in updateMoviePage : ", movie);
 
+  //*** Display the selected genres checkboxes  */
   function isChecked(genreId) {
     console.log("===>update genreId", genreId);
     console.log("+++movie.genres", movie.genres);
@@ -61,6 +64,7 @@ function UpdateMoviePage(props) {
     return someResult;
   }
 
+  // *** function handleChange is updating the selecting checkbox in a list
   const handleChange = (genreId) => {
     console.log("@@@@@@ genreId", genreId);
 
@@ -85,6 +89,7 @@ function UpdateMoviePage(props) {
     console.log("@@@@ copy", copy);
   };
 
+  // ******* this method submit the form *******
   const handleSubmit = async (e) => {
     e.preventDefault();
     const { title, description, mainActor /*, genres*/ } = movie; // destructuring the state
@@ -107,6 +112,7 @@ function UpdateMoviePage(props) {
     console.log("------ FORM DATA -----");
     console.log(formData); // <= this looks like a empty object
 
+    //*** creating new one with the PUT request that will allow us to update an existing movie */
     try {
       console.log("formData", formData);
 
@@ -117,16 +123,11 @@ function UpdateMoviePage(props) {
 
       console.log("Creating a updated movie", response.data);
 
-      //We will invoke the function getAllMovies passed through the props once the form is submitted:
-      //props.refreshMovies();
-      //This way we are refreshing the list of movies and dynamically fetching data each time we create a new movie using the form.
       navigate("/movies");
     } catch (error) {
       console.log("Error when adding the new movie", error);
     }
   };
-
-  // const handleChange = ()=>{}
 
   return (
     <div className="editMoviePage">

@@ -26,7 +26,7 @@
 
 .oneMovieWrapper .card__img {
     height: 35vh;
-    width: 100%;
+    width: 100% !important;
     object-fit: contain;
   }
 
