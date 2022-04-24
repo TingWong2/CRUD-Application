@@ -16,13 +16,20 @@ function UpdateMoviePage(props) {
     imageUrl: "",
   });
 
-  const { movieId } = useParams();
   //* Using the React Router’s useParams() hook we retrieve the projectId parameter from the URL: */
-  const imageRef = useRef("");
+  const { movieId } = useParams();
+
   //* useRef is like a “box” that can hold a mutable value in its .current property.
+  const imageRef = useRef("");
+
   const [genres, setGenres] = useState([]);
   const navigate = useNavigate();
   const [checkedGenre, setcheckedGenre] = useState([]);
+
+  //* 3 steps:
+  //* get, read the data from the database
+  //* reflect the data in the form
+  //* axios.put to update
 
   useEffect(() => {
     axios
@@ -51,7 +58,7 @@ function UpdateMoviePage(props) {
   }, [movieId]);
   console.log("movie in updateMoviePage : ", movie);
 
-  //*** Display the selected genres checkboxes  */
+  //*** Display the selected genres checkboxes  ****/
   function isChecked(genreId) {
     console.log("===>update genreId", genreId);
     console.log("+++movie.genres", movie.genres);
@@ -92,7 +99,7 @@ function UpdateMoviePage(props) {
   // ******* this method submit the form *******
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const { title, description, mainActor /*, genres*/ } = movie; // destructuring the state
+    const { title, description, mainActor } = movie; // destructuring the state
 
     const formData = new FormData(); // create a form data => an object to send as post body
 

@@ -8,7 +8,7 @@ import "../styles/addMoviePage.css";
 
 const API_URL = " http://localhost:5005";
 
-function AddMovie(props) {
+function AddMoviePage(props) {
   const [movie, setMovie] = useState("");
   const imageRef = useRef("");
   //useRef renvoie un objet ref modifiable dont la propriété current est initialisée avec l’argument fourni (initialValue)
@@ -82,7 +82,7 @@ function AddMovie(props) {
     console.log("------ FORM DATA -----");
     console.log(formData); // <= this looks like a empty object
 
-    //*** creating new ones (POST request) */
+    //****** Creating new ones (POST request) *****/
     try {
       console.log("formData", formData);
 
@@ -176,4 +176,4 @@ function AddMovie(props) {
   );
 }
 
-export default AddMovie;
+export default AddMoviePage;

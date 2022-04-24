@@ -15,7 +15,7 @@ function MovieDetailPage({ img, title, mainActor, description }) {
   const nagivate = useNavigate();
   const [genres, setGenres] = useState([]);
 
-  //*** Display one specific movie by it ID
+  //***** Display one specific movie by it ID *****/
   // * helper function with axios that make the get request to the API to retrieves the movie by the id
   // * and all the genres
 
@@ -50,7 +50,7 @@ function MovieDetailPage({ img, title, mainActor, description }) {
   }, []);
   //*** the effect should run only once by setting the empty dependency array [].
 
-  //*** Delete a specific movie ***/
+  //***** Delete a specific movie *****/
   const deleteMovie = () => {
     // make a delete request to delete the movie
     axios
