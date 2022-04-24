@@ -5,6 +5,9 @@ On the movies page, it display your full list of movies.
 For each movie you can see the title, the main actor, the genres, movie's description and the picture.
 You can update, delete and add all the movies you want to keep in the librairy.
 
+## Project link on Heroku
+https://crud-movie-application.herokuapp.com
+
 ## Install
 
 In each directory, run
