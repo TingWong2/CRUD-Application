@@ -38,7 +38,7 @@ router.get("/genres/:genreId", (req, res, next) => {
     .catch((error) => res.json(error));
 });
 
-// PUT/movies/:movieId - Update a specific movie by id
+//******  PUT/movies/:movieId - Update a specific movie by id ******
 
 router.put("/genres/:genreId", (req, res, next) => {
   const { genreId } = req.params;
@@ -53,7 +53,7 @@ router.put("/genres/:genreId", (req, res, next) => {
     .catch((error) => res.json(error));
 });
 
-// DELETE /api/movies/:movieId - Delete a specific movie by Id
+// ******  DELETE /api/movies/:movieId - Delete a specific movie by Id ******
 router.delete("/genres/:genreId", (req, res, next) => {
   const { genreId } = req.params;
 

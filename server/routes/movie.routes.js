@@ -8,33 +8,36 @@ const Genre = require("./../models/Genre.model");
 const fileUploader = require("./../config/cloudinary.config");
 
 // ****** Create ******
-
-// POST /api/movies - create a new movie
+//* POST /api/movies - create a new movie
 router.post(
-  "/movies",
+  // the HTTP verb/method needed to access this page
+  "/movies", // the route that a user will type into the URL bar
   fileUploader.single("imageUrl"),
   async (req, res, next) => {
-    const imageUrl = req.file?.path || undefined;
+    // callback as the second argument
+    // res, req are object and contains information about the request, response, such as headers and any data we need
+    const imageUrl = req.file?.path || undefined; // req.file.path => provided by cloudinary's response (URL of upload file)
     //si l'objet imbriqué existe je veux le path
     console.log("@ image", imageUrl);
 
     try {
+      // Mongoose’s create() is sending a MongoDB create command to the DataBase
       const newMovie = await Movie.create({
         ...req.body,
         imageUrl,
-      }); // req.file.path => provided by cloudinary's response (URL of upload file)
-      res.status(201).json(newMovie);
+      });
+      res.status(201).json(newMovie); // sending the view to the client
     } catch (error) {
       next(error);
     }
   }
 );
 
-// ****** READ ******
-// GET /api/movies - Retrieves all the movies
+// ****** READ ALL ******
+//* GET /api/movies - Retrieves all the movies
 router.get("/movies", (req, res, next) => {
   Movie.find() //  Mongoose’s find() is sending a MongoDB find command to the database
-    .populate("genres")
+    .populate("genres") //
     // using a promise
     .then((responseAllMovies) => {
       console.log("here is the BACK response", responseAllMovies);
@@ -43,7 +46,8 @@ router.get("/movies", (req, res, next) => {
     .catch((error) => res.json(error));
 });
 
-// GET /api/movies/:movieId - Retrieves a specific movie by Id
+// ****** READ ONE MOVIE ******
+//* GET /api/movies/:movieId - Retrieves a specific movie by Id
 router.get("/movies/:movieId", (req, res, next) => {
   const imageUrl = req.file?.path || undefined;
   const { movieId } = req.params;
@@ -55,38 +59,43 @@ router.get("/movies/:movieId", (req, res, next) => {
   // Each movie has a 'genre' array holding '_id's of genre documents
   // We use populate() method to get swap the actual '_id's for the actual genre documents
   Movie.findById(movieId, req.file)
-    .populate("genres")
+    .populate("genres") // type: Schema.Types.ObjectId, ref: "Genre",
     .then((movie) => res.status(200).json(movie))
     .catch((error) => res.json(error));
 });
 
 // ****** UPDATE ******
-// PUT/movies/:movieId - Update a specific movie by id
+//* PUT/movies/:movieId - Update a specific movie by id
 router.put(
-  "/movies/:movieId",
+  // the HTTP verb/method needed to access this page
+  "/movies/:movieId", // the route that a user will type into the URL bar
   fileUploader.single("imageUrl"),
   async (req, res, next) => {
+    // callback as the second argument
+    // res, req are object and contains information about the request, response, such as headers and any data we need
     const imageUrl = req.file?.path || undefined;
     //console.log("UPDATE see req.body, req.parmas.id", req.body, req.params);
+    // req.file.path => provided by cloudinary's response (URL of upload file)
     const { movieId } = req.params;
     if (!mongoose.Types.ObjectId.isValid(movieId)) {
       res.status(400).json({ message: "Specific Id is not Valid" });
       return;
     }
     try {
+      // Mongoose’s findByIdAndUpdate is sending a MongoDB find command to the database
       const updatedMovie = await Movie.findByIdAndUpdate(
         movieId,
         { ...req.body, imageUrl },
         { new: true }
       );
-      res.status(200).json(updatedMovie);
+      res.status(200).json(updatedMovie); // sending the view to the client
     } catch (error) {
       next(error);
     }
   }
 );
-
-// DELETE /api/movies/:movieId - Delete a specific movie by Id
+// ****** DELETE ******
+//* DELETE /api/movies/:movieId - Delete a specific movie by Id
 router.delete("/movies/:movieId", (req, res, next) => {
   const { movieId } = req.params;
 
