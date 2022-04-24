@@ -11,12 +11,12 @@ router.post("/genres", (req, res, next) => {
     .catch((error) => res.json(error));
 });
 
-// GET /api/genres - Retrieves all the movies
+// GET /api/genres - Retrieves all the genres
 router.get("/genres", (req, res, next) => {
-  //**** We use the Genre model to operate on the collection of the projects
+  //**** We use the Genre model to operate on the collection of the movies
   //**** Calling the find() method we retrieve all of the documents from the genres collection.
   Genre.find()
-    //**** We send the retrieved project documents as a JSON: res.json(allProjects)
+    //**** We send the retrieved genre documents as a JSON: res.json(allGenres)
     .then((allgenres) => {
       res.status(200).json(allgenres);
     })

@@ -1,3 +1,5 @@
+// Top of the file is all dependencies and then after i defined each routes
+
 const express = require("express");
 const router = express.Router();
 const mongoose = require("mongoose");
@@ -13,23 +15,24 @@ router.post(
   // the HTTP verb/method needed to access this page
   "/movies", // the route that a user will type into the URL bar
   fileUploader.single("imageUrl"),
-  async (req, res, next) => {
+  (req, res, next) => {
     // callback as the second argument
     // res, req are object and contains information about the request, response, such as headers and any data we need
     const imageUrl = req.file?.path || undefined; // req.file.path => provided by cloudinary's response (URL of upload file)
     //si l'objet imbriqué existe je veux le path
     console.log("@ image", imageUrl);
 
-    try {
-      // Mongoose’s create() is sending a MongoDB create command to the DataBase
-      const newMovie = await Movie.create({
-        ...req.body,
-        imageUrl,
+    // Mongoose’s create() is sending a MongoDB create command to the DataBase
+    Movie.create({
+      ...req.body,
+      imageUrl,
+    })
+      .then((newMovie) => {
+        res.status(201).json(newMovie); // sending the view to the client
+      })
+      .catch((error) => {
+        res.json(error);
       });
-      res.status(201).json(newMovie); // sending the view to the client
-    } catch (error) {
-      next(error);
-    }
   }
 );
 
@@ -86,7 +89,7 @@ router.put(
       const updatedMovie = await Movie.findByIdAndUpdate(
         movieId,
         { ...req.body, imageUrl },
-        { new: true }
+        { new: true } // always return the updated document
       );
       res.status(200).json(updatedMovie); // sending the view to the client
     } catch (error) {
