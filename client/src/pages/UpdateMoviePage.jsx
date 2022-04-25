@@ -5,6 +5,12 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Form, Container, Button } from "react-bootstrap";
 import "../styles/addMoviePage.css";
 
+//* 4 steps:
+//* get, read the data from the database
+//* reflect the data in the form
+//* send the payload to store it to the database
+//* axios.put to update
+
 const API_URL = "http://localhost:5005";
 
 function UpdateMoviePage(props) {
@@ -25,11 +31,6 @@ function UpdateMoviePage(props) {
   const [genres, setGenres] = useState([]);
   const navigate = useNavigate();
   const [checkedGenre, setcheckedGenre] = useState([]);
-
-  //* 3 steps:
-  //* get, read the data from the database
-  //* reflect the data in the form
-  //* axios.put to update
 
   useEffect(() => {
     axios
@@ -63,7 +64,9 @@ function UpdateMoviePage(props) {
     console.log("===>update genreId", genreId);
     console.log("+++movie.genres", movie.genres);
     console.log("checkedGenre", checkedGenre);
-
+    //The some() method tests whether at least one element in the array passes the test implemented
+    // by the provided function. It returns true if, in the array, it finds an element for which the
+    //provided function returns true; otherwise it returns false.
     const someResult = checkedGenre.some((g) => {
       return g === genreId;
     });

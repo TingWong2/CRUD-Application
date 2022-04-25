@@ -2,7 +2,7 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 
-// Routes
+// Routes component pages
 import HomePage from "./pages/HomePage";
 import MoviesListPage from "./pages/MoviesListPage";
 import AddMoviePage from "./pages/AddMoviePage";

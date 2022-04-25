@@ -6,6 +6,11 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Form, Container, Button } from "react-bootstrap";
 import "../styles/addMoviePage.css";
 
+//* 3 steps
+//* create a form
+//* collect the user imputs via html
+//* send the payload to store it to the database by the response we get an object Id
+
 const API_URL = " http://localhost:5005";
 
 function AddMoviePage(props) {
@@ -59,6 +64,7 @@ function AddMoviePage(props) {
   };
 
   //  ********* this method submit the form *********
+  // to build the payload we are using the FORMDATA
   const handleSubmit = async (e) => {
     e.preventDefault(); // prevent the form to reload
 
@@ -88,7 +94,7 @@ function AddMoviePage(props) {
 
       const response = await axios.post(`${API_URL}/api/movies`, formData);
 
-      console.log("Here!!!! A new movie is creating", response.data);
+      console.log("A new movie is creating", response.data);
 
       navigate("/movies");
     } catch (error) {
@@ -97,6 +103,7 @@ function AddMoviePage(props) {
   };
 
   return (
+    // collect the user inputs via html controls
     <div className="AddMovie">
       {/* <h1> New Movie</h1> */}
       <Container fluid>

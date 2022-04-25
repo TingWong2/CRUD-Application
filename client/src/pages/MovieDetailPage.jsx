@@ -13,11 +13,9 @@ function MovieDetailPage({ img, title, mainActor, description }) {
   // We retrieved the movie id coming from the URL parameter movieId using the useParams hook.
   const { movieId } = useParams();
   const nagivate = useNavigate();
-  const [genres, setGenres] = useState([]);
 
   //***** Display one specific movie by it ID *****/
   // * helper function with axios that make the get request to the API to retrieves the movie by the id
-  // * and all the genres
 
   const getMovie = () => {
     axios
@@ -26,15 +24,6 @@ function MovieDetailPage({ img, title, mainActor, description }) {
         const oneMovie = response.data;
         console.log("===> DetailPage response.data", response.data);
         setMovie(oneMovie);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-    axios
-      .get(`${API_URL}/api/genres`)
-      .then((response) => {
-        const foundGenres = response.data;
-        setGenres(foundGenres);
       })
       .catch((error) => {
         console.log(error);
